@@ -53,6 +53,31 @@ exports.getOne = async (req, res) => {
     })
 }
 
+exports.updatePost = async (req, res) => {
+    const { id, location, price, title, imageUrl } = req.body;
+    const updateField = {
+        ...(location && {location}),
+        ...(price && {price}),
+        ...(title && {title}),
+        ...(imageUrl && {imageUrl})
+    }
+    const updatedPost = await PostModel.update(updateField,
+        {
+            where: {
+                id
+            },
+            returning: true,
+            plain: true
+        }
+    )
+
+    res.status(200).json({
+        post: updatedPost,
+        successful: true
+    })
+
+}
+
 exports.home = async (req, res) => {
 
     res.status(200).json({ successful: true });

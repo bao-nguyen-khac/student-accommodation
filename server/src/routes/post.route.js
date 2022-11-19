@@ -12,6 +12,8 @@ route.post('/create', auth, uploads.single('image'), post.create);
 
 route.get('/getOne', post.getOne);
 
+route.post('/update', auth, post.updatePost )
+
 
 
 module.exports = route;
