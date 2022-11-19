@@ -1,4 +1,5 @@
-const { Sequelize, QueryTypes } = require("sequelize");
+const { Sequelize, QueryTypes, Op } = require("sequelize");
+
 const sequelize = new Sequelize(process.env.POSTGRES_DATABASE, process.env.POSTGRES_USERNAME, process.env.POSTGRES_PASSWORD, {
     host: process.env.POSTGRES_HOST,
     dialect: 'postgres',
@@ -17,6 +18,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.QueryTypes = QueryTypes;
+db.Op = Op;
 
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.post = require("./post.model.js")(sequelize, Sequelize);
