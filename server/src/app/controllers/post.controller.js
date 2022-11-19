@@ -1,0 +1,45 @@
+const db = require("../models");
+const PostModel = db.post;
+
+
+// Create and Save a new User
+exports.create = (req, res) => {
+    // Create a Tutorial
+    const Post = {
+        location: req.body.location,
+        price: req.body.price,
+        title: req.body.title,
+        user_id: req.userId,
+        status: 'EMPTY',
+        imageURL: req.body.imageURL
+    };
+
+    // Save Tutorial in the database
+    PostModel.create(Post)
+        .then(data => {
+            res.status(200).json({ data: data,successful: true });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ successful: false });
+        });
+};
+
+// Retrieve all Tutorials from the database.
+exports.get = async (req, res) => {
+    const posts = await PostModel.findAll({
+        where: {
+            user_id: req.userId
+        }
+    })
+    res.status(200).json({
+        posts: posts,
+        successful: true
+    })
+    
+};
+
+exports.home = async (req, res) => {
+
+    res.status(200).json({ successful: true });
+}

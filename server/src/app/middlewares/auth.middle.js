@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 function verifyToken(token) {
     try {
         var checkToken = jwt.verify(token, process.env.JWT_SECRECT);
-        return checkToken._id;
+        return checkToken.id;
     } catch (error) {
         res.status(500).json(error)
     }
@@ -14,6 +14,7 @@ module.exports = function AuthenMiddleware(req, res, next) {
     try {
         var token = req.header("Authorization").split(" ")[1]
         var checkToken = verifyToken(token);
+        console.log(checkToken);
         req.userId = checkToken;
         next();
     } catch (error) {

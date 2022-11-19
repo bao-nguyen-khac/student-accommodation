@@ -19,5 +19,14 @@ db.sequelize = sequelize;
 db.QueryTypes = QueryTypes;
 
 db.user = require("./user.model.js")(sequelize, Sequelize);
+db.post = require("./post.model.js")(sequelize, Sequelize);
+
+db.user.hasMany(db.post, {
+    foreignKey: 'user_id'
+})
+db.post.belongsTo(db.user, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 
 module.exports = db;
