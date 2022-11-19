@@ -18,6 +18,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.QueryTypes = QueryTypes;
 
-
+db.user = require("./user.model.js")(sequelize, Sequelize);
 
 module.exports = db;
