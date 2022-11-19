@@ -27,17 +27,21 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.get = async (req, res) => {
-    const posts = await PostModel.findAll({
-        where: {
-            user_id: req.userId
-        }
-    })
+    const posts = await PostModel.findAll({})
     res.status(200).json({
         posts: posts,
         successful: true
     })
-    
 };
+
+exports.getOne = async (req, res) => {
+    const { id } = req.query;
+    const postDetail = await PostModel.findByPk(id)
+    res.status(200).json({
+        post: postDetail,
+        successful: true
+    })
+}
 
 exports.home = async (req, res) => {
 
