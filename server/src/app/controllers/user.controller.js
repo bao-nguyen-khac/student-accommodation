@@ -12,14 +12,12 @@ exports.register = (req, res) => {
         });
     }
 
-    // Create a Tutorial
     const User = {
         email: req.body.email,
         password: req.body.password,
         role: 'retail'
     };
 
-    // Save Tutorial in the database
     UserModel.create(User)
         .then(data => {
             res.send(data);
