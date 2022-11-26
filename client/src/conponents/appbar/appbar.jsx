@@ -20,6 +20,10 @@ const ResponsiveAppBar = () => {
         localStorage.removeItem('token');
         navigate('/signin');
     }
+    const handleSignup = () => {
+        localStorage.removeItem('token');
+        navigate('/signup');
+    }
 
     return (
         <AppBar position="static">
@@ -91,6 +95,12 @@ const ResponsiveAppBar = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
+                        <Button variant="contained" color="success" sx={{mr: 1}} transformOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            onClick={handleSignup}>Signup</Button>
+
                         <Button variant="contained" color="success" transformOrigin={{
                                 vertical: "top",
                                 horizontal: "right",

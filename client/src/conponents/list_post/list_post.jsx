@@ -42,8 +42,10 @@ const Listpost = () => {
         display: 'block', 
         justifyContent: 'center',
         backgroundColor: 'whitesmoke',
+
         overflowY: 'auto',
         overflowX: 'auto'
+
         }}>
             <Search setPosts={setPosts}/>
        {posts?.map(element =>
@@ -51,7 +53,9 @@ const Listpost = () => {
                 
                 border: '1px solid black',
                 borderRadius: '8px',
+
                 margin: '9px auto',
+
                 width: '70%',
                 padding: '15px',
             }}>
@@ -74,6 +78,7 @@ const Listpost = () => {
                     color: element.status === 'EMPTY' ? "red" : "rgb(11, 173, 73)", 
                     fontWeight: 'bold',
                     marginLeft: '5px'
+
                 }}>
                     {element.status}
                 </span> 
@@ -87,6 +92,7 @@ const Listpost = () => {
             </span>
             <span className="descriptionPost">
                 <Typography>
+
                     <span style={{margin: '0', fontSize: '20px', fontWeight: 'bold'}}>Mô tả:</span>
                     {element.desc || <span>Phòng khá rộng nên ở được từ 3-4 người. Miễn phí gửi xe, miễn phí wifi... Phòng sạch sẽ, trang bị full toàn bộ nội thất chỉ cần xách valo vào ở ngay!!</span>}
                     <a href="#" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
@@ -97,7 +103,8 @@ const Listpost = () => {
                 justifyContent: 'end'
             }}>
                 <Button variant="outlined">Liên hệ ngay: {<Typography>01212121</Typography>}</Button>
-                
+               
+
             </span>
             </Box>
         )}
