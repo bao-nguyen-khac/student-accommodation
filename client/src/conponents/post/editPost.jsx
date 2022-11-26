@@ -29,7 +29,7 @@ const EditPost = () => {
         formData.append("title", data.title);
         formData.append("location", data.location);
         formData.append("price", data.price);
-        formData.append("desc", data.description);
+        formData.append("desc", data.desc);
         formData.append("image", image);
 
         try {

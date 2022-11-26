@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const jwt = require('jsonwebtoken');
 
 // Create and Save a new User
-exports.register = (req, res) => {
+exports.register = async (req, res) => {
     // Validate request
     if (!req.body.email || !req.body.password) {
         res.status(400).send({
@@ -12,22 +12,16 @@ exports.register = (req, res) => {
         });
     }
 
-    const User = {
+    const user = {
         email: req.body.email,
         password: req.body.password,
+        fullname: req.body.fullname,
+        phone: req.body.phone,
         role: 'retail'
     };
 
-    UserModel.create(User)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the User."
-            });
-        });
+    await UserModel.create(user)
+    res.status(200).json({ successful: true });
 };
 
 // Retrieve all Tutorials from the database.
@@ -44,7 +38,7 @@ exports.login = async (req, res) => {
     } else {
         res.status(200).json({ successful: false });
     }
-    
+
 };
 
 exports.home = async (req, res) => {

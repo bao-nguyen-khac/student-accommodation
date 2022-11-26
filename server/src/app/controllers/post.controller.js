@@ -1,7 +1,7 @@
 const db = require("../models");
 const UserModel = db.user
 const PostModel = db.post;
-
+const commentController = require("./comment.controller")
 exports.create = (req, res) => {
     const Post = {
         location: req.body.location,
@@ -13,14 +13,8 @@ exports.create = (req, res) => {
         desc: req.body.desc
     };
 
-    PostModel.create(Post)
-        .then(data => {
-            res.status(200).json({ data: data, successful: true });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ successful: false });
-        });
+    await = PostModel.create(Post)
+    res.status(200).json({ data: data, successful: true });
 };
 
 exports.search = async (req, res) => {
@@ -39,6 +33,9 @@ exports.get = async (req, res) => {
         nest: true,
         raw: true
     })
+    for (const post of posts) {
+        post.comments = await commentController.getByPostSub(post.id)
+    }
     res.status(200).json({
         posts: posts,
         successful: true
@@ -67,25 +64,33 @@ exports.getByUser = async (req, res) => {
 }
 
 exports.updatePost = async (req, res) => {
-    const { id, location, price, title, imageUrl } = req.body;
-    const updateField = {
-        ...(location && {location}),
-        ...(price && {price}),
-        ...(title && {title}),
-        ...(imageUrl && {imageUrl})
-    }
-    const updatedPost = await PostModel.update(updateField,
-        {
+    if (req.file.path) {
+        await PostModel.update({
+            location: req.body.location,
+            price: req.body.price,
+            title: req.body.title,
+            imageURL: req.file.path,
+            desc: req.body.desc
+        }, {
             where: {
-                id
-            },
-            returning: true,
-            plain: true
-        }
-    )
+                id: req.body.id,
+            }
+        })
+    } else {
+        await PostModel.update({
+            location: req.body.location,
+            price: req.body.price,
+            title: req.body.title,
+            desc: req.body.desc
+        }, {
+            where: {
+                id: req.body.id,
+            }
+        })
+    }
+
 
     res.status(200).json({
-        post: updatedPost,
         successful: true
     })
 

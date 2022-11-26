@@ -35,3 +35,15 @@ exports.getByPost = async (req, res) => {
         successful: true
     })
 };
+
+exports.getByPostSub = async (postId) => {
+    const comments = await CommentModel.findAll({
+        where: {
+            postId: postId
+        },
+        include: UserModel,
+        nest: true,
+        raw: true
+    })
+    return comments
+};

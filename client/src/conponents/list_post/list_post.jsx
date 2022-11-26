@@ -64,7 +64,7 @@ const Listpost = () => {
                 <Avatar src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar" />
             </span>
             <span className="userPost">
-                Huy Bùi
+                {element.user.fullname}
             </span>
             <span className="imagePost">
                 <img src={element.imageURL} alt='somepicture'/>
@@ -93,7 +93,7 @@ const Listpost = () => {
             <span className="descriptionPost">
                 <Typography>
                     <span style={{margin: '0', fontSize: '20px', fontWeight: 'bold'}}>Mô tả:</span>
-                    {element.desc || <span>Phòng khá rộng nên ở được từ 3-4 người. Miễn phí gửi xe, miễn phí wifi... Phòng sạch sẽ, trang bị full toàn bộ nội thất chỉ cần xách valo vào ở ngay!!</span>}
+                    {element.desc || null}
                     <a href="#" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
 
                 </Typography>
@@ -102,7 +102,7 @@ const Listpost = () => {
                 display: 'flex',
                 justifyContent: 'end'
             }}>
-                <Button variant="outlined">Liên hệ ngay: {<Typography>01212121</Typography>}</Button>
+                <Button variant="outlined">Liên hệ ngay: {element.user.phone}</Button>
                
 
             </span>

@@ -25,7 +25,7 @@ const Post = () => {
         formData.append("title", data.title);
         formData.append("location", data.location);
         formData.append("price", data.price);
-        formData.append("description", data.description);
+        formData.append("desc", data.desc);
         formData.append("image", image);
 
         try {
