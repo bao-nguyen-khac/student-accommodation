@@ -1,21 +1,18 @@
-const { where } = require("sequelize");
 const db = require("../models");
+const UserModel = db.user
 const PostModel = db.post;
 
-
-// Create and Save a new User
 exports.create = (req, res) => {
-    // Create a Tutorial
     const Post = {
         location: req.body.location,
         price: req.body.price,
         title: req.body.title,
-        user_id: req.userId,
+        userId: req.userId,
         status: 'EMPTY',
-        imageURL: req.file.path
+        imageURL: req.file.path,
+        desc: req.body.desc
     };
 
-    // Save Tutorial in the database
     PostModel.create(Post)
         .then(data => {
             res.status(200).json({ data: data, successful: true });
@@ -37,7 +34,11 @@ exports.search = async (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.get = async (req, res) => {
-    const posts = await PostModel.findAll({})
+    const posts = await PostModel.findAll({
+        include: UserModel,
+        nest: true,
+        raw: true
+    })
     res.status(200).json({
         posts: posts,
         successful: true

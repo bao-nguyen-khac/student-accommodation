@@ -22,13 +22,34 @@ db.Op = Op;
 
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.post = require("./post.model.js")(sequelize, Sequelize);
+db.comment = require("./comment.model.js")(sequelize, Sequelize);
 
 db.user.hasMany(db.post, {
-    foreignKey: 'user_id'
+    foreignKey: 'userId'
 })
 db.post.belongsTo(db.user, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
+
+db.post.hasMany(db.comment, {
+    foreignKey: 'postId'
+})
+
+db.comment.belongsTo(db.post, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+db.user.hasMany(db.comment, {
+    foreignKey: 'userId'
+})
+
+db.comment.belongsTo(db.user, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+
 
 module.exports = db;

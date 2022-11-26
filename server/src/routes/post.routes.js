@@ -10,9 +10,9 @@ route.get('/search', post.search);
 
 route.post('/create', auth, uploads.single('image'), post.create);
 
-route.get('/getOne', post.getOne);
+route.get('/getOne', auth, post.getOne);
 
-route.post('/update', auth, post.updatePost )
+route.post('/update', auth, post.updatePost)
 
 
 
