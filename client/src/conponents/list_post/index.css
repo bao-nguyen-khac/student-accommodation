@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+
+}
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.userPost {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.titlePost {
+    display: flex;
+    margin-top: 7px;
+    /* justify-content: center; */
+    font-weight: bold;
+}
+.locationPost {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.descriptionPost {
+    margin: auto;
+}
+.imagePost {
+    display: flex;
+    justify-content: center;
+}
+.imagePost img {
+    max-height:60%; 
+    max-width:60%;
+}
+
+.pricePost {
+    display: flex;
+    justify-content: flex-end;
+    font-size: medium;
+    font-weight: bold;
+    color: red;
+}

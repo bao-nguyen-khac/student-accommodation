@@ -1,0 +1,1 @@
+export {default as Listpost} from './list_post';
