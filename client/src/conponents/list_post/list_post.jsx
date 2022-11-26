@@ -4,12 +4,15 @@ import { Container } from "@mui/system";
 import './index.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Search } from '../search';
+
+
 
 
 const Listpost = () => {
     
     // fetchData()
-    const [posts, setPosts] = useState()
+    const [posts, setPosts] = useState();
     
     useEffect(()=>{
         async function fetchData() {
@@ -19,21 +22,40 @@ const Listpost = () => {
           }
           fetchData();
     },[])
-    console.log(posts)
-
     
+    // if (!posts) {
+    //     return (
+    //         <Container sx={{
+    //             display: 'block', 
+    //             justifyContent: 'center',
+    //             backgroundColor: 'red',
+                
+    //             }}>
+    //         <Box>
+    //             <Typography>Khong tim thay</Typography>
+    //         </Box>
+    //         </Container>
+    //     )
+    // }
   return (
     <Container sx={{
-        display: 'flex', 
+        display: 'block', 
         justifyContent: 'center',
         backgroundColor: 'whitesmoke',
-        overflowY: 'scroll'
+
+        overflowY: 'auto',
+        overflowX: 'auto'
+
         }}>
+            <Search setPosts={setPosts}/>
        {posts?.map(element =>
             <Box sx={{
+                
                 border: '1px solid black',
                 borderRadius: '8px',
-                margin: '20px',
+
+                margin: '9px auto',
+
                 width: '70%',
                 padding: '15px',
             }}>
@@ -51,32 +73,38 @@ const Listpost = () => {
                 {element.title}
             </span>
             <span>
-                Tình trạng: 
+                <Typography>Tình trạng:</Typography>
                 <span style={{
                     color: element.status === 'EMPTY' ? "red" : "rgb(11, 173, 73)", 
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    marginLeft: '5px'
+
                 }}>
-                {element.status}
+                    {element.status}
                 </span> 
             </span>
             <span className="pricePost">
-                {element.price}
+                {element.price} <Typography style={{fontSize: 'medium',
+    fontWeight: 'bold', marginLeft: '5px'}}>đồng / tháng</Typography>
             </span>
             <span className="locationPost">
                 {element.location}
             </span>
             <span className="descriptionPost">
                 <Typography>
-                    <h4 style={{margin: '0'}}>Mô tả:</h4>
-                    {element.description || <Typography>Phòng khá rộng nên ở được từ 3-4 người. Miễn phí gửi xe, miễn phí wifi... Phòng sạch sẽ, trang bị full toàn bộ nội thất chỉ cần xách valo vào ở ngay!!</Typography>}
-                    <a href="/" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
+                    <span style={{margin: '0', fontSize: '20px', fontWeight: 'bold'}}>Mô tả:</span>
+                    {element.desc || <span>Phòng khá rộng nên ở được từ 3-4 người. Miễn phí gửi xe, miễn phí wifi... Phòng sạch sẽ, trang bị full toàn bộ nội thất chỉ cần xách valo vào ở ngay!!</span>}
+                    <a href="#" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
+
                 </Typography>
             </span>
             <span style={{
                 display: 'flex',
-                justifyContent: 'flex-end'
+                justifyContent: 'end'
             }}>
-                <Button variant="outlined">Đặt cọc ngay</Button>
+                <Button variant="outlined">Liên hệ ngay: {<Typography>01212121</Typography>}</Button>
+               
+
             </span>
             </Box>
         )}
