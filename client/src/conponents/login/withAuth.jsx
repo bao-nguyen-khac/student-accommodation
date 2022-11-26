@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context';
 
 export const WithAuth = ({children}) => {
-    const { dispatch} = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect(() => {
         const checkUser = async () => {
@@ -15,13 +15,13 @@ export const WithAuth = ({children}) => {
                         Authorization: `Bearer ${token}`,
                     }
                   });
-                  
+                  console.log(res);
                 if (!res.data.successful) {
                     navigate('/signin',{replace: true});
+                } else {
+                    dispatch({type: 'SET_USER', payload: {isLoginIn: true}});
                 }
-                dispatch({type: 'SET_USER', dispatch: {
-                    isLoginIn: true
-                }});
+                
             } catch (error) {
                 navigate('/signin',{replace: true});
             }

@@ -12,11 +12,12 @@ import { AuthContext } from "../../context";
 const pages = [
     { name: "Bài đăng", link: "/", isLogin: false },
     { name: "Viết bài đăng", link: "/create_post", isLogin: true },
-    { name: "Chỉnh sửa bài đăng", link: "/edit_post", isLogin: true },
+    { name: "Chỉnh sửa bài đăng", link: "/list_my_post", isLogin: true },
 ];
 
 const ResponsiveAppBar = () => {
     const { state, dispatch } = React.useContext(AuthContext);
+    console.log(state);
     const navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem("token");
