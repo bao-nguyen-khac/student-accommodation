@@ -4,6 +4,7 @@ import { SignIn, WithAuth } from "./conponents/login";
 
 import {Search} from "./conponents/search"
 import {Post} from './conponents/post'
+import {EditPost} from './conponents/post'
 import { Listpost } from "./conponents/list_post";
 import { AppBar } from "./conponents/appbar";
 import { SignUp } from "./conponents/signup";
@@ -26,6 +27,15 @@ function App() {
                     <WithAuth>
                         <AppBar />
                         <Post />
+                    </WithAuth>
+                }
+            />
+            <Route
+                path="/edit_post"
+                element={
+                    <WithAuth>
+                        <AppBar />
+                        <EditPost />
                     </WithAuth>
                 }
             />
