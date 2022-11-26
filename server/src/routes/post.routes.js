@@ -12,6 +12,8 @@ route.post('/create', auth, uploads.single('image'), post.create);
 
 route.get('/getOne', auth, post.getOne);
 
+route.get('/getByUser', auth, post.getByUser);
+
 route.post('/update', auth, post.updatePost)
 
 

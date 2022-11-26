@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import axios from "axios";
 
-import { Typography } from "@mui/material";
 function Search(props) {
     const [location, setLocation] = useState('');
     const handleSearch = async (e) => {

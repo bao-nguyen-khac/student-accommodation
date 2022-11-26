@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../../context";
+import {Link as LinkReact} from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -105,6 +106,14 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
+                        <LinkReact to='/signup'><Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                        >
+                            Go to signup
+                        </Button></LinkReact>
                     </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />

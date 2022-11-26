@@ -54,6 +54,18 @@ exports.getOne = async (req, res) => {
     })
 }
 
+exports.getByUser = async (req, res) => {
+    const posts = await PostModel.findAll({
+        where: {
+            userId: req.userId
+        }
+    })
+    res.status(200).json({
+        post: posts,
+        successful: true
+    })
+}
+
 exports.updatePost = async (req, res) => {
     const { id, location, price, title, imageUrl } = req.body;
     const updateField = {
