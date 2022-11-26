@@ -11,7 +11,7 @@ import { SignUp } from "./conponents/signup";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<><AppBar /><Search /></>} />
+            <Route path="/" element={<><AppBar /><Listpost /></>} />
             <Route
                 path="/signin"
                 element={
@@ -39,7 +39,7 @@ function App() {
                     </WithAuth>
                 }
             />
-            <Route path="/listpost" element={<><AppBar /><Listpost /></>} />
+            {/* <Route path="/listpost" element={<><AppBar /></>} /> */}
             <Route path="/signup" element={<><AppBar/><SignUp/></>}/>
         </Routes>
     );

@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context";
-
+import LOGO from './LOGO.png' ;
 const pages = [
     { name: "Bài đăng", link: "/", isLogin: false },
     { name: "Viết bài đăng", link: "/create_post", isLogin: true },
@@ -31,9 +31,12 @@ const ResponsiveAppBar = () => {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon
+                    {/* <AdbIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                    />
+                    /> */}
+                    <img src={LOGO} style={{
+                        width: '5%'
+                    }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -44,12 +47,12 @@ const ResponsiveAppBar = () => {
                             display: { xs: "none", md: "flex" },
                             fontFamily: "monospace",
                             fontWeight: 700,
-                            letterSpacing: ".3rem",
+                            letterSpacing: ".2rem",
                             color: "inherit",
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        BACH KHOA 
                     </Typography>
                     <AdbIcon
                         sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
