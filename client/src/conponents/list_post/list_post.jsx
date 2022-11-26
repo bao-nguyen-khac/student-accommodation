@@ -69,7 +69,7 @@ const Listpost = () => {
                 <Typography>
                     <h4 style={{margin: '0'}}>Mô tả:</h4>
                     {element.description || <Typography>Phòng khá rộng nên ở được từ 3-4 người. Miễn phí gửi xe, miễn phí wifi... Phòng sạch sẽ, trang bị full toàn bộ nội thất chỉ cần xách valo vào ở ngay!!</Typography>}
-                    <a href="#" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
+                    <a href="/" style={{fontStyle:'italic', fontSize: '13px'}}>Xem chi tiết</a>
                 </Typography>
             </span>
             <span style={{

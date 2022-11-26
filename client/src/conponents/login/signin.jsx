@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { AuthContext } from "../../context";
 
 function Copyright(props) {
     return (
@@ -32,6 +33,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+    const { dispatch} = React.useContext(AuthContext);
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -47,6 +49,7 @@ export default function SignIn() {
             });
             const token = res.data.token;
             localStorage.setItem("token", token);
+            dispatch({type: 'SET_USER', payload: {isLoginIn: true}});
             navigate("/");
         } catch (error) {
             console.log(error);

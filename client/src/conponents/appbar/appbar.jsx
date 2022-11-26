@@ -7,19 +7,25 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context";
 
 const pages = [
-    { name: "Bài đăng", link: "/" },
-    { name: "Viết bài đăng", link: "/create_post" },
-    { name: "Chỉnh sửa bài đăng", link: "/create_post" },
+    { name: "Bài đăng", link: "/", isLogin: false },
+    { name: "Viết bài đăng", link: "/create_post", isLogin: true },
+    { name: "Chỉnh sửa bài đăng", link: "/edit_post", isLogin: true },
 ];
 
 const ResponsiveAppBar = () => {
+    const { state, dispatch } = React.useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        navigate('/signin');
-    }
+        localStorage.removeItem("token");
+        dispatch({ type: "SET_USER", payload: { isLoginIn: false } });
+        navigate("/signin");
+    };
+    const handleSignin = () => {
+        navigate("/signin");
+    };
 
     return (
         <AppBar position="static">
@@ -73,7 +79,11 @@ const ResponsiveAppBar = () => {
                         }}
                     >
                         {pages.map((page) => (
-                            <NavLink to={page.link} style={{textDecoration: 'none'}}>
+                            <NavLink
+                                key={page.link}
+                                to={page.link}
+                                style={{ textDecoration: "none" }}
+                            >
                                 <Typography>
                                     <Button
                                         key={page.name}
@@ -91,11 +101,23 @@ const ResponsiveAppBar = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button variant="contained" color="success" transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            onClick={handleLogout}>Logout</Button>
+                        {state.isLoginIn ? (
+                            <Button
+                                variant="contained"
+                                color="success"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="contained"
+                                color="success"
+                                onClick={handleSignin}
+                            >
+                                SignIn
+                            </Button>
+                        )}
                     </Box>
                 </Toolbar>
             </Container>
