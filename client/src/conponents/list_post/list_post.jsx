@@ -24,16 +24,18 @@ const Listpost = () => {
     
   return (
     <Container sx={{
-        display: 'flex', 
+        display: 'block', 
         justifyContent: 'center',
         backgroundColor: 'whitesmoke',
-        overflowY: 'scroll'
+        overflowY: 'auto',
+        overflowX: 'auto'
         }}>
        {posts?.map(element =>
             <Box sx={{
+                
                 border: '1px solid black',
                 borderRadius: '8px',
-                margin: '20px',
+                margin: '9px auto',
                 width: '70%',
                 padding: '15px',
             }}>
@@ -60,7 +62,8 @@ const Listpost = () => {
                 </span> 
             </span>
             <span className="pricePost">
-                {element.price}
+                {element.price} <span style={{fontSize: 'medium',
+    fontWeight: 'bold', marginLeft: '5px'}}> đồng / tháng</span>
             </span>
             <span className="locationPost">
                 {element.location}
@@ -74,7 +77,7 @@ const Listpost = () => {
             </span>
             <span style={{
                 display: 'flex',
-                justifyContent: 'flex-end'
+                justifyContent: 'end'
             }}>
                 <Button variant="outlined">Đặt cọc ngay</Button>
             </span>
