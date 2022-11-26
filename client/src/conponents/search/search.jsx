@@ -4,14 +4,18 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import axios from "axios";
 
-function Search() {
+import { Typography } from "@mui/material";
+function Search(props) {
     const [location, setLocation] = useState('');
     const handleSearch = async (e) => {
         try {
             
             const res = await axios.get(`http://localhost:4000/api/post/search?location=${location}`);
             console.log(res);
-
+            if (res) {
+                props.setPosts(res.data.posts);
+            }
+            
         }
         catch (error) {
             console.log(error);
