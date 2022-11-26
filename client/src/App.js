@@ -6,7 +6,15 @@ import { AppBar } from "./conponents/appbar";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<><AppBar /><p>This is the home page</p></>} />
+            <Route
+                path="/"
+                element={
+                    <>
+                        <AppBar />
+                        <p>This is the home page</p>
+                    </>
+                }
+            />
             <Route
                 path="/signin"
                 element={
