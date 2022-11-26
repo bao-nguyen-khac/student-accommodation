@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
 import { SignIn, WithAuth } from "./conponents/login";
-import { Post } from "./conponents/post";
+
+import {Search} from "./conponents/search"
+import {Post} from './conponents/post'
+import { Listpost } from "./conponents/list_post";
 import { AppBar } from "./conponents/appbar";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<><AppBar /><p>This is the home page</p></>} />
+            <Route path="/" element={<><AppBar /><Search /></>} />
             <Route
                 path="/signin"
                 element={
@@ -25,6 +28,7 @@ function App() {
                     </WithAuth>
                 }
             />
+            <Route path="/listpost" element={<><AppBar /><Listpost /></>} />
         </Routes>
     );
 }

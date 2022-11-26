@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Post = sequelize.define("Post", {
+    const Post = sequelize.define("post", {
         id: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
         imageURL: {
             type: Sequelize.STRING,
         },
-        user_id: {
+        userId: {
             type: Sequelize.UUID
         },
         status: {
