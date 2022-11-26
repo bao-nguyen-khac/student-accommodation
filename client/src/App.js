@@ -6,6 +6,7 @@ import {Search} from "./conponents/search"
 import {Post} from './conponents/post'
 import { Listpost } from "./conponents/list_post";
 import { AppBar } from "./conponents/appbar";
+import { SignUp } from "./conponents/signup";
 function App() {
     return (
         <Routes>
@@ -29,6 +30,7 @@ function App() {
                 }
             />
             <Route path="/listpost" element={<><AppBar /><Listpost /></>} />
+            <Route path="/signup" element={<><AppBar/><SignUp/></>}/>
         </Routes>
     );
 }
